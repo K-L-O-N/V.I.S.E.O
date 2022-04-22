@@ -1,3 +1,0 @@
-
-def checkHand():
-    if
