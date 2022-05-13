@@ -1,18 +1,18 @@
+import autopy as ap
 import cv2
 import numpy as np
+
 import HandMotionModeule as hmm
-import autopy as ap
-import time
-import threading
+
 
 def main():
 
-    detector = hmm.handDetector(maxHands = 1)
+    detector = hmm.handDetector(maxHands=1)
     wScr, hScr = ap.screen.size()
     clocX, clocY = 0, 0
     plocX, plocY = 0, 0
-    frameR = 200
-    smoothening = 7
+    frameR = 100
+    smoothening = 10
     wCam, hCam = 1280, 960
     isMenu = False
 
@@ -49,20 +49,22 @@ def main():
 
         if isMenu:
             cv2.putText(frame, "Menu Open!", (100, 100), 0, 2, (0, 255, 0), 3)
-            cv2.rectangle(frame, (frameR, frameR), (wCam - frameR * 3, hCam - frameR * 2),
+            cv2.rectangle(frame, (frameR, frameR), (wCam - frameR, hCam - frameR),
                           (255, 0, 255), 2)
             if fingers[0] == 0 and fingers[1] == 1:
-                x3 = np.interp(x1, (frameR, wCam - frameR * 3), (0, wScr))
-                y3 = np.interp(y1, (frameR, hCam - frameR * 2), (0, hScr))
+                x3 = np.interp(x1, (frameR, wCam - frameR), (0, wScr))
+                y3 = np.interp(y1, (frameR, hCam - frameR), (0, hScr))
                 clocX = plocX + (x3 - plocX) / smoothening
                 clocY = plocY + (y3 - plocY) / smoothening
                 ap.mouse.move(wScr - clocX, clocY)
                 cv2.circle(frame, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
                 plocX, plocY = clocX, clocY
+
             if fingers[1] == 1 and fingers[2] == 1:
-                    ap.mouse.toggle(ap.mouse.Button.LEFT, True)
+                ap.mouse.toggle(ap.mouse.Button.LEFT, True)
+                cv2.circle(frame, (x2, y2), 15, (255, 0, 255), cv2.FILLED)
             if fingers[2] == 0:
-                    ap.mouse.toggle(ap.mouse.Button.LEFT, False)
+                ap.mouse.toggle(ap.mouse.Button.LEFT, False)
 
             if fingers == [0,0,0,0,0]:
                 isMenu = False
