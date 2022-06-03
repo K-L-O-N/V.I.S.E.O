@@ -11,9 +11,9 @@ def main():
     wScr, hScr = ap.screen.size()
     clocX, clocY = 0, 0
     plocX, plocY = 0, 0
-    frameR = 100
+    frameR = 150
     smoothening = 10
-    wCam, hCam = 1280, 960
+    wCam, hCam = 1280, 720
     isMenu = False
 
     cap = cv2.VideoCapture(0)
@@ -26,9 +26,9 @@ def main():
         lmList, bbox = detector.findPosition(frame)
 
         if len(lmList) != 0:
-            if bbox[3] - bbox[1] < 100 or bbox[2] - bbox[0] < 100:
+            if bbox[3] - bbox[1] < 120 or bbox[2] - bbox[0] < 120:
                 print("작은 크기")
-                cv2.imshow('test', frame)
+                # cv2.imshow('test', frame)
                 cv2.waitKey(1)
                 continue
             x1, y1 = lmList[8][1:]
@@ -69,7 +69,7 @@ def main():
             if fingers == [0,0,0,0,0]:
                 isMenu = False
 
-        cv2.imshow('test', frame)
+        # cv2.imshow('test', frame)
         cv2.waitKey(1)
 
 if __name__ == "__main__":
