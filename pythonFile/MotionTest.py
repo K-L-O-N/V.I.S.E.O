@@ -28,10 +28,7 @@ def main():
         lmList, bbox = detector.findPosition(frame)
 
         if len(lmList) != 0:
-            if bbox[3] - bbox[1] < 120 or bbox[2] - bbox[0] < 120:
-                #print("작은 크기")
-                cv2.imshow('test', frame)
-                cv2.waitKey(1)
+            if bbox[3] - bbox[1] < 80 or bbox[2] - bbox[0] < 80:
                 continue
             x1, y1 = lmList[4][1:]
             x2, y2 = lmList[8][1:]
@@ -73,6 +70,9 @@ def main():
 
         cv2.imshow('test', frame)
         cv2.waitKey(1)
+        if fingers == [1,1,0,0,1]:
+            cv2.destroyAllWindows()
+            break
 
 if __name__ == "__main__":
     main()
