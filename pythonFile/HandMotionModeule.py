@@ -17,7 +17,7 @@ class handDetector():
         self.mpDraw = mp.solutions.drawing_utils
         self.tipIds = [4, 8, 12, 16, 20]
 
-    def findHands(self, img, draw=True):
+    def findHands(self, img, draw=False):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.hands.process(imgRGB)
 
@@ -29,7 +29,7 @@ class handDetector():
 
         return img
 
-    def findPosition(self, img, handNo=0, draw=True):
+    def findPosition(self, img, handNo=0, draw=False):
         xList = []
         yList = []
         bbox = []
