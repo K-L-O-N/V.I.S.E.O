@@ -1,0 +1,6 @@
+.ripples{
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  pointer-events: none;
+}
