@@ -11,8 +11,10 @@ Module.register("MMM-ShowAndHind-Menu", {
 		//message : "default message if none supplied in config.js",
 	},
 
-	getStyles: function () {
-		return ["MMM-ShowAndHind-Menu.css"];
+	getStyles: function() {
+		return [
+			"MMM-ShowAndHind-Menu.css"
+		];
 	},
 
 	getScripts: function() {
@@ -44,8 +46,7 @@ Module.register("MMM-ShowAndHind-Menu", {
 		let subMenuItemCount; 	// 클릭된 메뉴의 아이템의 개수를 파악하기 위한 변수
 		let next; 				// 다음 버튼 생성용 변수
 		let prev;
-
-		let ripples; 			// 마우스 클릭 시 물결을 표시하기 위한 변수
+s
 
 		console.log(itemCount);
 		/**
@@ -124,15 +125,6 @@ Module.register("MMM-ShowAndHind-Menu", {
 			let showItemIndex = 0;		// 현재 중앙에 보여주고 있는 아이템의 인덱스 번호
 			let clickOption = 1;		// 현재 클릭한 옵션이 무엇인지 확인하기 위한 변수 next => 양수 / prev => 음수
 
-			/*
-			subMenuContainer = createDiv('container', 700,700);
-			subMenuContainer.style.top = '50%';
-			subMenuContainer.style.left = '50%';
-			subMenuContainer.style.transform = 'translate(-50%,-50%)';
-			*/
-
-			//$body.appendChild(subMenuContainer);
-
 			for (let i = 0; i < itemCount[parseInt(index)]; i++) {
 				subMenu[i] = createDiv(i, menuWidth, menuHeight);
 				subMenu[i].style.top = `${50}%`;
@@ -145,22 +137,6 @@ Module.register("MMM-ShowAndHind-Menu", {
 				}
 				subMenu[i].style.transform = `translate(-50%,-50%)`;
 				//subMenuContainer.appendChild(subMenu[i]);
-
-/* 				
-				// 현재 테스트 중임 아래 방법으로는 안움직임
-				const keyframe = document.createElement('style');
-				keyframe.innerHTML = `  
-					@keyframes move {
-						0% {
-							left = ${subMenu[i].style.left}%;
-						}
-						100% {
-							left = ${subMenu[i].style.left} + 25 * ${clickOption}%;
-						}
-					}`;
-
-				subMenu[i].appendChild(keyframe);
-				subMenu[i].animation = 'move 1s linear'; */
 
 				$body.appendChild(subMenu[i]);
 			}
@@ -201,7 +177,6 @@ Module.register("MMM-ShowAndHind-Menu", {
 					console.log('이전으로 갈 수 있음');
 					showItemIndex--;
 					clickOption = -1;
-					subMenu[showItemIndex].style.left -= '25%';
 				}else{
 					console.log('이전으로 갈 수가 없음');
 				}
