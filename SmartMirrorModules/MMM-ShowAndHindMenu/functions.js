@@ -2,7 +2,7 @@
  * 화면에 나오는 모듈을 숨기는 함수
  * @param {string} moduleName 숨기고자하는 모듈의 이름 작성  
  */
-function hind(moduleName) { // module hind
+ function hind(moduleName) { // module hind
     MM.getModules().withClass([`${moduleName}`]).enumerate(function (module) {
         module.hide();
     });
@@ -26,14 +26,10 @@ function show(moduleName) { // module show
  */
 function createDiv(context, width, height) {
     let div = document.createElement('div');
+    div.className = "menuDiv";
     div.innerHTML = `${context}`;
-    div.style.position = 'absolute';
     div.style.width = `${width}px`;
     div.style.height = `${height}px`;
-    div.style.textAlign = 'center';
     div.style.lineHeight = `${height}px`;
-    div.style.border = '5px solid white';
-    div.style.borderRadius = '10px';
-    //div.style.onmouseover = `${setCursor(div,'pointer')}`;
     return div;
 }
