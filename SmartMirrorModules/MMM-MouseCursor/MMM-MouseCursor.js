@@ -33,7 +33,6 @@ Module.register("MMM-MouseCursor", {
 
       // 60을 빼줌 
       //why? -기본 margin이 60이 잡혀있기 때문 - 추후 margin값을 가져와서 빼주는 형태로 변경필요
-      
       ripples.style.left = x - 60 + "px";
       ripples.style.top = y - 60 + "px";
       return ripples;
