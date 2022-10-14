@@ -141,15 +141,6 @@ s
 				$body.appendChild(subMenu[i]);
 			}
 
-			/*
-			for(let i = 0; i < itemCount[parseInt(index)]; i++){
-				subMenu[i] = createDiv(i,menuWidth,menuHeight);
-			}
-						
-			showListReserch(0);
-			*/
-
-
 			next = createDiv('next', 100, 100);
 			next.style.top = '50%';
 			next.style.left = '90%';
