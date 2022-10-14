@@ -39,8 +39,8 @@ Module.register("MMM-ShowAndHind-Menu", {
 		let subMenu = [];
 		let showSubMenu = [3];
 
-		let isMenu = false; 	// 초기 메뉴의 활성화 여부를 확인하기 위한 변수
-		let isMenuActive = false; // 각 메뉴를 사용하고 있는지 확인하기 위한 함수
+		let isMenu = false; 		// 초기 메뉴의 활성화 여부를 확인하기 위한 변수　false - 비활성화
+		let isMenuActive = false; 	// 각 메뉴를 사용하고 있는지 확인하기 위한 함수  false - 비활성화
 
 		let subMenuContainer; 	// 메뉴의 아이템을 띄우는 공간을 만들어주기 위한 변수 - 일단 현재는 필요가 없음
 		let subMenuItemCount; 	// 클릭된 메뉴의 아이템의 개수를 파악하기 위한 변수
@@ -86,8 +86,8 @@ s
 			//$body.removeChild(subMenuContainer);	
 		}
 
-		/**
-		 * 메뉴를 생성
+		/*
+		 만약 초기 메뉴가 비활성화 되어 있고 서브 카테고리들이 작동되지 않았을 경우 
 		 */
 		function createMenu() {
 			if (!isMenu && !isMenuActive) {
