@@ -51,13 +51,13 @@ let config = {
 		},
 		{
 			module: "calendar",
-			header: "US Holidays",
+			header: "나의 일정",
 			position: "top_left",
 			config: {
 				calendars: [
 					{
 						symbol: "calendar-check",
-						url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"
+						url: "https://calendar.google.com/calendar/ical/devilljh1%40kyungmin.ac.kr/public/basic.ics"
 					}
 				]
 			}
@@ -117,15 +117,16 @@ let config = {
 			}
 		},
 		{
-			module: "MMM-ShowAndHind-Menu",
+			module: "MMM-MouseCursor",
 		},
 		{
-			module: "MMM-MouseCursor",
+			module: "MMM-ShowDetails",
+			position: "bottom_bar",
 		},
 
 			
 	]
 };
 
-/*************** DO NOT EDIT THE LINE BELOW ***************/
+/*************** DO NOT EDIT THE LINE BELOW ***************/	
 if (typeof module !== "undefined") {module.exports = config;}
