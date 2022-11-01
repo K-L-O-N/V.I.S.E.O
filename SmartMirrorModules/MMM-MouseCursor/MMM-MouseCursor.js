@@ -24,10 +24,7 @@ Module.register("MMM-MouseCursor", {
 
       let x = event.clientX;
       let y = event.clientY;
-
-      console.log(`${x} = ${event.clientX} - ${event.target.offsetLeft}`);
-      console.log(`${y} = ${event.clientY} - ${event.target.offsetTop}`);
-
+      
       ripples = document.createElement("ripples");
       ripples.className = "ripples";
 
@@ -42,8 +39,6 @@ Module.register("MMM-MouseCursor", {
       if (typeof ripples === 'undefined') { // 최초로 클릭했을 때
         ripples = clickEvent(e);
         ripples.className = 'ripples';
-        console.log(ripples.className);
-        console.log(ripples.style.backgroundColor);
         $body.appendChild(ripples);
       } else { // 이후부터는 자식 객체를 제거 후 다시 생성
         $body.removeChild(ripples);

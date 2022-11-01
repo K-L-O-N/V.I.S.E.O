@@ -41,10 +41,10 @@ let config = {
 		{
 			module: "alert",
 		},
-		{
-			module: "updatenotification",
-			position: "top_bar"
-		},
+		// {
+		// 	module: "updatenotification",
+		// 	position: "top_bar"
+		// },
 		{
 			module: "clock",
 			position: "top_left"
@@ -57,7 +57,7 @@ let config = {
 				calendars: [
 					{
 						symbol: "calendar-check",
-						url: "https://calendar.google.com/calendar/ical/devilljh1%40kyungmin.ac.kr/public/basic.ics"
+						url: "iCal type address"
 					}
 				]
 			}
@@ -119,6 +119,24 @@ let config = {
 		{
 			module: "MMM-MouseCursor",
 		},
+		{
+            "module": "MMM-WeatherChart",
+            "position": "top_right",
+            "config": {
+                "apiKey": "d6f43e085fcbdfb6ca7d3b6daeed3b43",
+                "dataNum": 12,
+                "dataType": "hourly",
+                "height": "500px",
+                "width": "800px",
+                "lat": 35.571337,
+                "lon": 139.633989,
+                "units": "metric",
+                "showRain": true,
+                "includeSnow": true,
+                "showSnow": true,
+                "showIcon": true
+            }
+        },
 		{
 			module: "MMM-ShowDetails",
 			position: "bottom_bar",
