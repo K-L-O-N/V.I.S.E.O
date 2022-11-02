@@ -1,7 +1,8 @@
 Module.register("MMM-ShowDetails", {
   defaults: {
     hindStyle: "all", //options: "one", "all" 
-    defaultModuleCount: 8 // length기준으로 설정  
+    defaultModuleCount: 8, // length기준으로 설정  
+    callJsFile : []
   },
   getStyles: function () {
     return [
@@ -10,24 +11,20 @@ Module.register("MMM-ShowDetails", {
   },
   getScripts: function () {
     return [
-      "ShowHindeModule.js",
+      "ShowHindeModule.js"
     ];
   },
   start: function () {
     Log.info("Starting module: " + this.name);
+
+    console.log(this.callJsFile);
 
     this.loadCount = 0;
     this.hindStyle = this.config.hindStyle;
     this.defaultModuleCount = this.config.defaultModuleCount;
   },
   getDom: function () {
-    const wrapper = document.createElement("div"); // 테스트용
-    wrapper.classList.add("wrapperTest");
-    wrapper.addEventListener('click', () => {
-      let testDiv = document.createElement("div");
-      testDiv.className = "testDiv";
-      wrapper.appendChild(testDiv);
-    });
+    const wrapper = document.createElement("div"); 
 
     if (this.loadCount == 0) {
       /**
@@ -95,6 +92,7 @@ Module.register("MMM-ShowDetails", {
       // 상세 내용을 표시할 모듈용 객체 생성를 생성하고 배열에 push
       for (let i = this.defaultModuleCount; i < mouduleName.length; i++) {
         mouduleStatus[i] = true;
+        console.log(mouduleName[i]);
         hind(mouduleName[i]);
         let obj = {
           "id": moduleId[i],
@@ -126,5 +124,4 @@ Module.register("MMM-ShowDetails", {
     }
     return wrapper;
   },
-
 });
