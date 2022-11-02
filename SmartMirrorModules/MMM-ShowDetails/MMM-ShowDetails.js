@@ -11,7 +11,6 @@ Module.register("MMM-ShowDetails", {
   getScripts: function () {
     return [
       "ShowHindeModule.js",
-      "Stack.js"
     ];
   },
   start: function () {
