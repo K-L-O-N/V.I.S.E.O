@@ -12,6 +12,7 @@ Module.register("MMM-MouseCursor", {
   },
 
   getDom(){
+    let wrapper = document.createElement("div");
     let ripples;
     let $body = document.querySelector("body");
 
@@ -38,7 +39,7 @@ Module.register("MMM-MouseCursor", {
       ripples.style.top = y - 60 + "px";
       return ripples;
     }
-    
+
     window.addEventListener('click', (e) => {
       console.log(this.isActivity , typeof this.isActivity);
       if(this.isActivity){
@@ -55,7 +56,7 @@ Module.register("MMM-MouseCursor", {
         }
       }
     });
-
+    return wrapper;
   }
 
 })
