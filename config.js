@@ -118,10 +118,11 @@ let config = {
 		},
 		{
 			module: "MMM-MouseCursor",
+			position: "center",
 		},
 		{
             "module": "MMM-WeatherChart",
-            "position": "top_right",
+            "position": "center",
             "config": {
                 "apiKey": "d6f43e085fcbdfb6ca7d3b6daeed3b43",
                 "dataNum": 12,
