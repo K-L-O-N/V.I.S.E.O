@@ -82,7 +82,7 @@ let config = {
 		{
 			module: "weather",
 			position: "top_right",
-			header: "Weather Forecast",
+			header: "날씨",
 			config: {
 				weatherProvider: "openweathermap",
 				type: "forecast",
@@ -98,7 +98,7 @@ let config = {
 				feeds: [
 					{
 						//title: "New York Times",
-						title: "news",						
+						title: "뉴스",						
 						//url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
 						url: "https://www.yonhapnewstv.co.kr/browse/feed/"					
 					}
@@ -112,8 +112,10 @@ let config = {
 				{
 			module: "MMM-AirQuality",
 			position: "top_right",
+			header:"미세먼지",
 			config: {
-				location: "Seoul"
+				location: "Seoul",
+				lang:"kr"
 			}
 		},
 		{
@@ -125,17 +127,21 @@ let config = {
             "position": "center",
             "config": {
                 "apiKey": "d6f43e085fcbdfb6ca7d3b6daeed3b43",
-                "dataNum": 12,
-                "dataType": "hourly",
+                "dataNum": 16,
+                "dataType": "daily",
                 "height": "500px",
-                "width": "800px",
+                "width": "1000px",
                 "lat": 35.571337,
                 "lon": 139.633989,
                 "units": "metric",
                 "showRain": true,
                 "includeSnow": true,
                 "showSnow": true,
-                "showIcon": true
+                "showIcon": true,
+				"colorMin": "rgba(2, 103, 181, 1)",
+				"colorMax": "rgba(181, 63, 63, 1)",
+				"colorRain": "rgba(19, 4, 181, 1)",
+				"colorSnow": "rgba(255, 255, 255, 1)",
             }
         },
 		{
