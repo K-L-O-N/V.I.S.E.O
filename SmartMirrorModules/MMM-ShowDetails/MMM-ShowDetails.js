@@ -47,7 +47,7 @@ Module.register("MMM-ShowDetails", {
           "name": mouduleName[i],
           "status": mouduleStatus[i],
           "target": target,
-          "detail": null    // 배열로 넣는다.
+          "detail": null // 배열로 넣는다.
         }
         defaultModule.push(obj);
       }
@@ -67,11 +67,9 @@ Module.register("MMM-ShowDetails", {
       }
 
 
-      let header = document.createElement("div");;  // 모듈의 앞에서 내용을 추가 해줄 요소를 저장할 변수
-      let body = document.createElement("div");     // 모듈의 뒤에서 내용을 추가 해줄 요소를 저장할 변수
+      let header = document.createElement("div");; // 모듈의 앞에서 내용을 추가 해줄 요소를 저장할 변수
+      let body = document.createElement("div"); // 모듈의 뒤에서 내용을 추가 해줄 요소를 저장할 변수
 
-      header.classList.add("header");
-      body.classList.add("body");
 
       // [기본으로 보유하는 모듈]각 객체에 이벤트 리스너를 추가
       for (let i = 0; i < defaultModule.length; i++) {
@@ -97,9 +95,36 @@ Module.register("MMM-ShowDetails", {
               switch (targetName) { // 객체의 이름에 따라 알맞은 모듈 연결
                 case "weather":
                   defaultModule[i].detail = 'MMM-WeatherChart'; // detail로 연결
+
+                  header.classList.add("weather-header");
+                  body.classList.add("weather-body");
+
                   // 모듈외에 추가하고 싶은 내용
-                  header.innerHTML="요일별 날씨";
-                  body.innerHTML="내용이 보이나요?";
+                  header.innerHTML = "요일별 날씨 현황";
+                  console.log(document.querySelector("span[class='dimmed']").innerText.split(" "));
+                  body.innerHTML = `
+                  <div style='width:${document.querySelector("canvas").clientWidth - 100}px'>
+                    <span class='chart' style='color:rgba(181, 63, 63, 1)'>최고기온</span>
+                    <span class='chart' style='color:rgba(2, 103, 181, 1)'>최저기온</span>
+                    <span class='chart' style='color:rgba(19, 4, 181, 1)'>강수량</span>
+                    <span class='chart' style='color:rgba(255, 255, 255, 1)'>적설량</span>
+                  </div>
+                  <br><br>
+                  <table>
+                  <tr>
+                      <td>현재 온도</td>
+                      <td>${document.querySelector("span.bright").innerHTML}</td>
+                  </tr>
+                  <tr>
+                      <td>체감 온도</td>
+                      <td>${document.querySelector("span[class='dimmed']").innerText.split(" ")[1]}</td>
+                  </tr>
+                  <tr>
+                      <td>미세 먼지</td>
+                      <td>${document.querySelector("i[class='fa fa-leaf']").parentNode.innerText}</td>
+                  </tr>
+                  </table>
+                  `;
                   break;
               }
 
@@ -152,6 +177,7 @@ Module.register("MMM-ShowDetails", {
       })
 
       this.loadCount++;
+      this.updateDom();
     }
     return wrapper;
   },
