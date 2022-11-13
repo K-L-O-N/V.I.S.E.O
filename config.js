@@ -180,6 +180,10 @@ let config = {
 			module: "MMM-ShowDetails",
 			position: "bottom_bar",
 		},
+		{
+			module: "MMM-Dress",
+			position: "top_left",
+		},
 
 
 	]
