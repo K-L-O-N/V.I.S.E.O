@@ -17,6 +17,8 @@ Module.register("MMM-ShowDetails", {
     this.loadCount = 0;
     this.hindStyle = this.config.hindStyle;
     this.defaultModuleCount = this.config.defaultModuleCount;
+
+
   },
   getDom: function () {
     const wrapper = document.createElement("div");
@@ -67,9 +69,8 @@ Module.register("MMM-ShowDetails", {
       }
 
 
-      let header = document.createElement("div");; // 모듈의 앞에서 내용을 추가 해줄 요소를 저장할 변수
-      let body = document.createElement("div"); // 모듈의 뒤에서 내용을 추가 해줄 요소를 저장할 변수
-
+      let header;// 모듈의 앞에서 내용을 추가 해줄 요소를 저장할 변수
+      let body;  // 모듈의 뒤에서 내용을 추가 해줄 요소를 저장할 변수
 
       // [기본으로 보유하는 모듈]각 객체에 이벤트 리스너를 추가
       for (let i = 0; i < defaultModule.length; i++) {
@@ -96,8 +97,8 @@ Module.register("MMM-ShowDetails", {
                 case "weather":
                   defaultModule[i].detail = 'MMM-WeatherChart'; // detail로 연결
 
-                  header.classList.add("weather-header");
-                  body.classList.add("weather-body");
+                  header = this.create("weather-header", "div");
+                  body = this.create("weather-body", "div");
 
                   // 모듈외에 추가하고 싶은 내용
                   header.innerHTML = "요일별 날씨 현황";
@@ -113,11 +114,11 @@ Module.register("MMM-ShowDetails", {
                   <table>
                   <tr>
                       <td>현재 온도</td>
-                      <td>${document.querySelector("span.bright").innerHTML}</td>
+                      <td>${document.querySelector("span.bright").innerText}C</td>
                   </tr>
                   <tr>
                       <td>체감 온도</td>
-                      <td>${document.querySelector("span[class='dimmed']").innerText.split(" ")[1]}</td>
+                      <td>${document.querySelector("span[class='dimmed']").innerText.split(" ")[1]}C</td>
                   </tr>
                   <tr>
                       <td>미세 먼지</td>
@@ -125,6 +126,23 @@ Module.register("MMM-ShowDetails", {
                   </tr>
                   </table>
                   `;
+                  break;
+
+                case "calendar":
+                  console.log("calendar 클릭됨");
+                  defaultModule[i].detail = 'MMM-CalendarExt3'; // detail로 연결
+
+                  header = this.create("calendar-header", "div");
+                  body = this.create("calendar-body", "div");
+                  header.innerText = new Date().getMonth()+1 + "월";
+                  break;
+                case "newsfeed":
+                  console.log("newsfeed 클릭됨");
+                  console.log(detailModule);
+                  defaultModule[i].detail = 'second-newsfeed';
+                  header = this.create("calendar-header", "div");
+                  body = this.create("calendar-body", "div");
+                  header.innerText = "JTBC 속보";
                   break;
               }
 
@@ -201,4 +219,18 @@ Module.register("MMM-ShowDetails", {
       module.show();
     });
   },
+
+  /**
+   * 전달받은 클래스 명, 요소 타입을 가진 요소 생성
+   * @param {*} className    해당 요소에만 주고 싶은 클래스 이름
+   * @param {*} elementType  해당 요소의 타입
+   * @returns 만들어진 요소를 반환
+   */
+  create(className, elementType){
+    let obj = document.createElement(elementType);
+    obj.classList.add(className);
+    return obj;
+  }
+
+  
 });

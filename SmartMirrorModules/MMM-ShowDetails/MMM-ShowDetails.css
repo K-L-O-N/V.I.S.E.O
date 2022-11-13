@@ -1,9 +1,9 @@
-.weather-header{
+div[class*=header]{
     font-size: 30px;
     color: white;
 }
 
-.weather-body{
+div[class*=body]{
     font-size: 40px;
     color: white;
 }
