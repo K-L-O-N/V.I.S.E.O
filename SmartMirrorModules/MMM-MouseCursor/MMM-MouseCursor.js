@@ -8,13 +8,28 @@ Module.register("MMM-MouseCursor", {
   },
 
   start: function () {
-    this.isActivity = true;
+    this.isActivity = false;
   },
 
-  getDom(){
+  getDom() {
     let wrapper = document.createElement("div");
     let ripples;
+
     let $body = document.querySelector("body");
+    let $html = document.querySelector("html");
+
+    let clickDefender = document.createElement("div");
+    clickDefender.className = "cursor";
+    clickDefender.style.cursor="help";
+    document.addEventListener("mousemove", (e) => {
+      let x = e.clientX;
+      let y = e.clientY;
+      clickDefender.style.left = x - parseInt(getComputedStyle($body).margin.split("px")[0]) + "px";
+      clickDefender.style.top = y - parseInt(getComputedStyle($body).margin.split("px")[0]) + "px";
+    });
+
+    $body.appendChild(clickDefender);
+    
 
     /**
      * 마우스 클릭시 물결의 모양을 만들 수 있는 함수
@@ -29,20 +44,46 @@ Module.register("MMM-MouseCursor", {
 
       let x = event.clientX;
       let y = event.clientY;
-      
+
       ripples = document.createElement("ripples");
       ripples.className = "ripples";
 
       // 60을 빼줌 
-      //why? -기본 margin이 60이 잡혀있기 때문 - 추후 margin값을 가져와서 빼주는 형태로 변경필요
-      ripples.style.left = x - 60 + "px";
-      ripples.style.top = y - 60 + "px";
+      //why? -기본 margin이 60이 잡혀있기 때문 
+      ripples.style.left = x - parseInt(getComputedStyle($body).margin.split("px")[0]) + "px";
+      ripples.style.top = y - parseInt(getComputedStyle($body).margin.split("px")[0]) + "px";
       return ripples;
     }
 
+
+    /**
+     * Home/End키를 통해서 마우스 활성 여부를 확인
+     * Home키가 입력되었다면 this.isActivity를 true로 변경하여 마우스의 물결 표시를 추가 
+     * End키 입력시 비활성화
+     */
+    window.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case "Home":
+          console.log("Home키가 입력되었습니다.");
+          if (!this.isActivity) {
+            this.isActivity = true;
+            clickDefender.style.cursor = "default";
+            $body.removeChild(clickDefender);
+          }
+          break;
+        case "End":
+          console.log("End키가 입력되었습니다.");
+          if (this.isActivity) {
+            this.isActivity = false;
+            $html.style.cursor = "wait";
+            clickDefender.appendChild(clickDefender);
+          }
+          break;
+      }
+    })
+
     window.addEventListener('click', (e) => {
-      console.log(this.isActivity , typeof this.isActivity);
-      if(this.isActivity){
+      if (this.isActivity) {
         // 객체가 계속 생기는 것을 방지하고자 삭제 후 다시 생성
         if (typeof ripples === 'undefined') { // 최초로 클릭했을 때
           ripples = clickEvent(e);
@@ -57,6 +98,5 @@ Module.register("MMM-MouseCursor", {
       }
     });
     return wrapper;
-  }
-
+  },
 })

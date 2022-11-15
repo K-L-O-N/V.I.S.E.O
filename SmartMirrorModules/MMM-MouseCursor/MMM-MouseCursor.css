@@ -1,21 +1,29 @@
-.ripples{
-    position: absolute;
-    background-color: #f00;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: animate 1s linear;
-    transform: translate(-50%,-50%);
+.ripples {
+  position: absolute;
+  background-color: #f00;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: animate 1s linear;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes animate {
-    0% {
-        width: 0px;
-       height: 0px;
-       opacity: 0.5;
-     }
-     100% {
-       width: 100px;
-       height: 100px;
-       opacity: 0;
-     }
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+  }
+
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+.cursor {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
