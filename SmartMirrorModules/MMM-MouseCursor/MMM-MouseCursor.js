@@ -9,6 +9,7 @@ Module.register("MMM-MouseCursor", {
 
   start: function () {
     this.isActivity = false;
+    this.firstLoad = true;
   },
 
   getDom() {
@@ -16,20 +17,17 @@ Module.register("MMM-MouseCursor", {
     let ripples;
 
     let $body = document.querySelector("body");
-    let $html = document.querySelector("html");
 
-    let clickDefender = document.createElement("div");
-    clickDefender.className = "cursor";
-    clickDefender.style.cursor="help";
-    document.addEventListener("mousemove", (e) => {
-      let x = e.clientX;
-      let y = e.clientY;
-      clickDefender.style.left = x - parseInt(getComputedStyle($body).margin.split("px")[0]) + "px";
-      clickDefender.style.top = y - parseInt(getComputedStyle($body).margin.split("px")[0]) + "px";
-    });
+    let bodyMargin = getComputedStyle($body).margin.split("px")[0];
+    let autoCursor = this.createCursor("auto",bodyMargin);
+    let helpCursor = this.createCursor("help",bodyMargin);
+    autoCursor.className ="cursor auto";
+    helpCursor.className ="cursor help";
 
-    $body.appendChild(clickDefender);
-    
+    if(this.firstLoad){
+      $body.appendChild(helpCursor);
+      this.firstLoad =false;
+    }
 
     /**
      * 마우스 클릭시 물결의 모양을 만들 수 있는 함수
@@ -67,16 +65,20 @@ Module.register("MMM-MouseCursor", {
           console.log("Home키가 입력되었습니다.");
           if (!this.isActivity) {
             this.isActivity = true;
-            clickDefender.style.cursor = "default";
-            $body.removeChild(clickDefender);
+            if(helpCursor !==null){
+              $body.removeChild(helpCursor);
+              $body.appendChild(autoCursor);
+            }
           }
           break;
         case "End":
           console.log("End키가 입력되었습니다.");
           if (this.isActivity) {
             this.isActivity = false;
-            $html.style.cursor = "wait";
-            clickDefender.appendChild(clickDefender);
+            if(autoCursor !==null){
+              $body.removeChild(autoCursor);
+              $body.appendChild(helpCursor);
+            }
           }
           break;
       }
@@ -99,4 +101,23 @@ Module.register("MMM-MouseCursor", {
     });
     return wrapper;
   },
+
+  /**
+   * 
+   * @param {string} pointerType 마우스 커서의 모양을 설정
+   * @param {string} margin 기본 margin의 값을 삽입
+   * @returns 
+   */
+  createCursor(pointerType, margin){
+    if(margin == undefined) margin = "0";
+    let clickDefender = document.createElement("div");
+    clickDefender.style.cursor=pointerType;
+    document.addEventListener("mousemove", (e) => {
+      let x = e.clientX;
+      let y = e.clientY;
+      clickDefender.style.left = x - parseInt(margin) + "px";
+      clickDefender.style.top = y - parseInt(margin) + "px";
+    });
+    return clickDefender;
+  }
 })

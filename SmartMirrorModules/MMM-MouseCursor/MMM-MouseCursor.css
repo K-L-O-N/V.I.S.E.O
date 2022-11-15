@@ -22,8 +22,11 @@
 }
 
 .cursor {
-  width: 100px;
-  height: 100px;
   position: absolute;
   transform: translate(-50%, -50%);
+}
+
+.help{
+  width: 100px;
+  height: 100px;
 }
