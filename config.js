@@ -124,6 +124,10 @@ let config = {
 			position: "center",
 		},
 		{
+			module: "MMM-Dress",
+			position: "top_left",
+		},
+		{
 			"module": "MMM-WeatherChart",
 			"position": "center",
 			"config": {
@@ -179,10 +183,9 @@ let config = {
 		{
 			module: "MMM-ShowDetails",
 			position: "bottom_bar",
-		},
-		{
-			module: "MMM-Dress",
-			position: "top_left",
+			config:{
+				defaultModuleCount:9,
+			},
 		},
 
 
