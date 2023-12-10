@@ -74,6 +74,7 @@ let config = {
 			config: {
 				weatherProvider: "openweathermap",
 				type: "current",
+				units:"metric",
 				location: "Seoul",
 				locationID: "1835848", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
 				apiKey: "d6f43e085fcbdfb6ca7d3b6daeed3b43"
@@ -86,6 +87,7 @@ let config = {
 			config: {
 				weatherProvider: "openweathermap",
 				type: "forecast",
+				units:"metric",
 				location: "Seoul",
 				locationID: "1835848", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
 				apiKey: "d6f43e085fcbdfb6ca7d3b6daeed3b43"
@@ -136,8 +138,8 @@ let config = {
 				"dataType": "daily",
 				"height": "500px",
 				"width": "1000px",
-				"lat": 35.571337,
-				"lon": 139.633989,
+				"lat": 37.583,
+				"lon": 127.000,
 				"units": "metric",
 				"showRain": true,
 				"includeSnow": true,
@@ -174,11 +176,16 @@ let config = {
 				showPublishDate: true,
 				showDescription: true,
 				showAsList:true,
-				maxNewsItems:8,
+				maxNewsItems:6,
 
 				broadcastNewsFeeds: true,
 				broadcastNewsUpdates: true,
 			}
+		},
+		{
+			module: "MMM-DressDetail",
+			position: "center",
+			
 		},
 		{
 			module: "MMM-ShowDetails",
