@@ -19,7 +19,7 @@ Module.register("MMM-MouseCursor", {
 
     let $body = document.querySelector("body");
     let $html = document.querySelector("html");
-    $html.className="cursor";
+    $html.className="test";
 
     /**
      * 마우스 클릭시 물결의 모양을 만들 수 있는 함수
@@ -64,7 +64,7 @@ Module.register("MMM-MouseCursor", {
           console.log("End키가 입력되었습니다.");
           if (this.isActivity) {
             this.isActivity = false;
-            $html.className="cursor";
+            $html.className="test";
           }
           break;
       }
