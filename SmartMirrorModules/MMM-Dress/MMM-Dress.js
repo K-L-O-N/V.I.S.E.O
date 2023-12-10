@@ -6,9 +6,7 @@ Module.register("MMM-Dress", {
         return ["MMM-Dress.css"];
     },
     getScripts() {
-        return [
-
-        ];
+        return [];
     },
     start: function () {
         Log.info("Starting module: " + this.name);

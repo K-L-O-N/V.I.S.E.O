@@ -1,0 +1,39 @@
+.contain{
+    position: relative;
+    border: 1px solid white;
+    width: 750px;
+    height: 800px;
+    padding: 10px;  
+    box-sizing: border-box;
+    box-shadow:  1px 1px 10px , -1px -1px 10px;
+}
+
+.container .box{
+    color: black;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: inset 2px 2px 10px white , inset -2px -2px  10px white;
+}
+
+.container div[class ~= inline]{
+    width: 120px;
+    display: inline-block;
+    border-radius: 3px;
+    margin-left: 2px;
+    padding: 20px 0px 20px 0px ;
+}
+
+.container div[class ~= block]{
+	margin: 10px 0px;
+    height: 680px;
+	position: relative;
+	text-align: center;
+}
+
+.contain div[class ~= block] .img{
+    position: absolute;
+    display: block;
+	width:100%;
+    height:100%;
+}
