@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+SmartMirrorModules/MMM-DressDetail/img/
+SmartMirrorModules/MMM-DressDetail/pyFile/image.zip
