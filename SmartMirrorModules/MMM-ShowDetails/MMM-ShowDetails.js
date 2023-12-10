@@ -68,6 +68,7 @@ Module.register("MMM-ShowDetails", {
         detailModule.push(obj);
       }
 
+      console.log(detailModule);
 
       let header;// 모듈의 앞에서 내용을 추가 해줄 요소를 저장할 변수
       let body;  // 모듈의 뒤에서 내용을 추가 해줄 요소를 저장할 변수
@@ -140,9 +141,16 @@ Module.register("MMM-ShowDetails", {
                   console.log("newsfeed 클릭됨");
                   console.log(detailModule);
                   defaultModule[i].detail = 'second-newsfeed';
-                  header = this.create("calendar-header", "div");
-                  body = this.create("calendar-body", "div");
+                  header = this.create("newsfeed-header", "div");
+                  body = this.create("newsfeed-body", "div");
                   header.innerText = "JTBC 속보";
+                  break;
+
+                case "MMM-Dress":
+                  defaultModule[i].detail = 'MMM-DressDetail';
+                  header = this.create("dress-header", "div");
+                  body = this.create("dress-body", "div");
+                  header.innerHTML = "오늘의 추천<br><br>";
                   break;
               }
 
